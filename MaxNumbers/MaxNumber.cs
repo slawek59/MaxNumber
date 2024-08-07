@@ -4,7 +4,12 @@
 	{
 		if (string.IsNullOrEmpty(input))
 		{
-			throw new ArgumentNullException(nameof(input), "Input parameter can not be null.");
+			throw new ArgumentNullException(nameof(input), "Input parameter can not be null or empty.");
+		}
+
+		if (string.IsNullOrWhiteSpace(input))
+		{
+			throw new ArgumentException("Input should not be whitespace", nameof(input));
 		}
 
 		if (!input.All(Char.IsLetter))
@@ -54,7 +59,12 @@
 	{
 		if (string.IsNullOrEmpty(input))
 		{
-			throw new ArgumentNullException(nameof(input), "Input parameter can not be null.");
+			throw new ArgumentNullException(nameof(input), "Input parameter can not be null or empty.");
+		}
+
+		if (string.IsNullOrWhiteSpace(input))
+		{
+			throw new ArgumentException("Input should not be whitespace", nameof(input));
 		}
 
 		if (!input.All(Char.IsLetter))
@@ -70,6 +80,11 @@
 		if (string.IsNullOrEmpty(input))
 		{
 			throw new ArgumentNullException(nameof(input), "Input parameter can not be null.");
+		}
+
+		if (string.IsNullOrWhiteSpace(input))
+		{
+			throw new ArgumentException("Input should not be whitespace", nameof(input));
 		}
 
 		if (!input.All(Char.IsDigit))

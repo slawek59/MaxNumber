@@ -3,23 +3,32 @@ namespace MaxNumbersTests
 	[TestFixture]
 	public class MaxNumberTests
 	{
-		//[SetUp]
-		//public void Setup()
-		//{
-		//}
-
 		[Test]
 		public void MaxNumberOfUnequalConsecutiveChars_StrParamIsNull_ThrowsNullException()
 		{
 			// Act
-			Assert.Throws<ArgumentNullException>(() => MaxNumber.MaxNumberOfConsecutiveIdenticalLettersOfLatin(null));
+			Assert.Throws<ArgumentNullException>(() => MaxNumber.MaxNumberOfUnequalConsecutiveChars(null));
+		}
+
+		[Test]
+		public void MaxNumberOfUnequalConsecutiveChars_StrParamIsEmpty_ThrowsNullException()
+		{
+			// Act
+			Assert.Throws<ArgumentNullException>(() => MaxNumber.MaxNumberOfUnequalConsecutiveChars(""));
+		}
+
+		[Test]
+		public void MaxNumberOfUnequalConsecutiveChars_StrParamsIsWhitespace_ThrowsArgumentException()
+		{
+			// Act
+			Assert.Throws<ArgumentException>(() => MaxNumber.MaxNumberOfUnequalConsecutiveChars(" "));
 		}
 
 		[Test]
 		public void MaxNumberOfUnequalConsecutiveChars_StrParamContainsDigits_ThrowsArgumentException()
 		{
 			// Act
-			Assert.Throws<ArgumentException>(() => MaxNumber.MaxNumberOfConsecutiveIdenticalLettersOfLatin("a1b"));
+			Assert.Throws<ArgumentException>(() => MaxNumber.MaxNumberOfUnequalConsecutiveChars("a1b"));
 		}
 
 		[TestCase("a", ExpectedResult = 1)]
@@ -39,6 +48,20 @@ namespace MaxNumbersTests
 		{
 			// Act
 			Assert.Throws<ArgumentNullException>(() => MaxNumber.MaxNumberOfConsecutiveIdenticalLettersOfLatin(null));
+		}
+
+		[Test]
+		public void MaxNumberOfConsecutiveIdenticalLettersOfLatin_StrParamIsEmpty_ThrowsNullException()
+		{
+			// Act
+			Assert.Throws<ArgumentNullException>(() => MaxNumber.MaxNumberOfConsecutiveIdenticalLettersOfLatin(""));
+		}
+
+		[Test]
+		public void MaxNumberOfConsecutiveIdenticalLettersOfLatin_StrParamsIsWhitespace_ThrowsArgumentException()
+		{
+			// Act
+			Assert.Throws<ArgumentException>(() => MaxNumber.MaxNumberOfConsecutiveIdenticalLettersOfLatin(" "));
 		}
 
 		[Test]
@@ -68,6 +91,19 @@ namespace MaxNumbersTests
 			Assert.Throws<ArgumentNullException>(() => MaxNumber.MaxNumberOfConsecutiveIdenticalDigits(null));
 		}
 
+		public void MaxNumberOfConsecutiveIdenticalDigits_StrParamIsEmpty_ThrowsNullException()
+		{
+			// Act
+			Assert.Throws<ArgumentNullException>(() => MaxNumber.MaxNumberOfConsecutiveIdenticalDigits(""));
+		}
+
+		[Test]
+		public void MaxNumberOfConsecutiveIdenticalDigits_StrParamsIsWhitespace_ThrowsArgumentException()
+		{
+			// Act
+			Assert.Throws<ArgumentException>(() => MaxNumber.MaxNumberOfConsecutiveIdenticalDigits(" "));
+		}
+
 		[Test]
 		public void MaxNumberOfConsecutiveIdenticalDigits_StrParamContainsLetters_ThrowsArgumentException()
 		{
@@ -78,7 +114,7 @@ namespace MaxNumbersTests
 		[TestCase("11123", ExpectedResult = 3)]
 		[TestCase("1122223", ExpectedResult = 4)]
 		[TestCase("12333", ExpectedResult = 3)]
-		[TestCase("123", ExpectedResult = 1)]
+		[TestCase("012", ExpectedResult = 1)]
 		[TestCase("1", ExpectedResult = 1)]
 		[TestCase("9283716455572819", ExpectedResult = 3)]
 		[TestCase("928555553716455572819", ExpectedResult = 5)]
